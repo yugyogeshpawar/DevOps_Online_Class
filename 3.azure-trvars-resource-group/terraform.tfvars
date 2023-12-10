@@ -1,0 +1,1 @@
+azurerm_resource_group_names = ["resource_using_set_yogesh_1" , "resource_using_set_yogesh_2" , "resource_using_set_yogesh_3" , "resource_using_set_yogesh_5" , "resource_using_set_yogesh_6"]
