@@ -3,7 +3,7 @@ resource "azurerm_resource_group" "assingment_resource" {
   location = "eastus"
 }
 
-resource "azurerm_storage_account" "assingment_account" {
+resource "azurerm_storage_account" "s13dec" {
   for_each = var.storage_accounts_names
 
   name                     = each.key
@@ -15,5 +15,5 @@ resource "azurerm_storage_account" "assingment_account" {
   tags = {
     environment = "staging"
   }
-  
+
 }
