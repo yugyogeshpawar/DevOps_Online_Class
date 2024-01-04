@@ -3,6 +3,6 @@ resource "azurerm_mssql_server" "sqlserver" {
   resource_group_name          = "yogesh-rg-tf"
   location                     = "West Europe"
   version                      = "12.0"
-  administrator_login          = "yug"
-  administrator_login_password = "Yogesh@72448"
+  administrator_login          = "adminuser"
+  administrator_login_password = "admin@123456"
 }

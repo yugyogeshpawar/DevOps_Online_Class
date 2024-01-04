@@ -1,3 +1,3 @@
 rgs = {
-  rg1 = "West US"
+  todoapprg = "West US"
 }
