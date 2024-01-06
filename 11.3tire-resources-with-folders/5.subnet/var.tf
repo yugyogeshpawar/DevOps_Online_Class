@@ -1,3 +1,3 @@
-variable "vms" {
+variable "subnets" {
     type = map(any)
 }
