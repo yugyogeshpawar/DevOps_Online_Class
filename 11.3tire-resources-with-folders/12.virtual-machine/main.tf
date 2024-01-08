@@ -1,4 +1,5 @@
 
+
 resource "azurerm_virtual_machine" "main" {
   for_each = var.vms
   name                  = each.value.name
@@ -20,9 +21,9 @@ resource "azurerm_virtual_machine" "main" {
     managed_disk_type = "Standard_LRS"
   }
   os_profile {
-    computer_name  = "yug"
-    admin_username = "adminuser"
-    admin_password = "admin@1234"
+    computer_name  = "yugmachine"
+    admin_username = "yug"
+    admin_password = "Yogesh@72448"
   }
   os_profile_linux_config {
     disable_password_authentication = false

@@ -1,7 +1,7 @@
 resource "azurerm_sql_database" "example" {
   name                = "myexamplesqldatabase"
   resource_group_name = "todoapprg"
-  location            = "West US"
+  location            = "South Central US"
   server_name         = "yugsqlserver"
 
   tags = {
