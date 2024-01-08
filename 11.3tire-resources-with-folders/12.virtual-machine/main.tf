@@ -1,5 +1,4 @@
 
-
 resource "azurerm_virtual_machine" "main" {
   for_each = var.vms
   name                  = each.value.name
