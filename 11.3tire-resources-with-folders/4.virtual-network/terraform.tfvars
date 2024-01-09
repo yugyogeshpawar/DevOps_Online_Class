@@ -1,7 +1,7 @@
 vns = {
   vn1 = {
     name        = "todo-vn"
-    location    = "South Central US"
+    location    = "East Us"
     rgname      = "yugtodoapprg"
     addresspace = ["10.0.0.0/16"]
   }

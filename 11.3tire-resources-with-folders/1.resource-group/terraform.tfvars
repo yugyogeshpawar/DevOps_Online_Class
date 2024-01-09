@@ -1,3 +1,3 @@
 rgs = {
-  yugtodoapprg = "South Central US"
+  yugtodoapprg = "East Us"
 }

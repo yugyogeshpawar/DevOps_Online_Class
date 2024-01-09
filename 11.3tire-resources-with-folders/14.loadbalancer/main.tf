@@ -1,6 +1,6 @@
 resource "azurerm_public_ip" "lb_public_ip" {
   name                = "lb-public-ip"
-  location            = "South Central US"
+  location            = "East Us"
   resource_group_name = "yugtodoapprg"
   allocation_method   = "Static"
 }
@@ -9,7 +9,7 @@ resource "azurerm_public_ip" "lb_public_ip" {
 resource "azurerm_lb" "example" {
   name                = "todo-lb"
   resource_group_name = "yugtodoapprg"
-  location            = "South Central US"
+  location            = "East Us"
 
   frontend_ip_configuration {
     name                 = "PublicIPAddress"

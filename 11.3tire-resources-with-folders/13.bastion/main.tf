@@ -16,7 +16,7 @@ data "azurerm_public_ip" "existing_public_ip" {
 
 resource "azurerm_bastion_host" "yogeshbastion" {
   name                = "yugtodobastion"
-  location            = "South Central US"
+  location            = "East Us"
   resource_group_name = "yugtodoapprg"
 
   ip_configuration {

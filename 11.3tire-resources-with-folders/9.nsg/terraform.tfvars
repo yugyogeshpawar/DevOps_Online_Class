@@ -1,12 +1,12 @@
 nsgs = {
   nsg1 = {
     name     = "acceptanceTestSecurityGroup1"
-    location = "South Central US"
+    location = "East Us"
     rg       = "yugtodoapprg"
   }
   nsg2 = {
     name     = "acceptanceTestSecurityGroup2"
-    location = "South Central US"
+    location = "East Us"
     rg       = "yugtodoapprg"
   }
 }

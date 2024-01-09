@@ -1,7 +1,7 @@
 ipps = {
   ip1 = {
     name     = "public-todo"
-    location = "South Central US"
+    location = "East Us"
     rg       = "yugtodoapprg"
     alo      = "Static"
     skuu     = "Standard"
