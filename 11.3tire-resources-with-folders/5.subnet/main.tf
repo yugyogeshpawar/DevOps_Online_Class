@@ -6,10 +6,3 @@ resource "azurerm_subnet" "yogeshsubnet" {
   address_prefixes     = each.value.address_prefixes
 }
 
-
-resource "azurerm_subnet" "subnet_bastion" {
-  name                 = "subnet_bastion"
-  resource_group_name  = "yugtodoapprg"
-  virtual_network_name = "todo-vn"
-  address_prefixes     = ["10.0.4.0/24"]
-}

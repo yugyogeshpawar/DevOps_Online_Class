@@ -7,6 +7,12 @@ subnets = {
   AzureBastionSubnet = {
     rgname           = "yugtodoapprg"
     vnet             = "todo-vn"
-    address_prefixes = ["10.0.3.0/24"] 
+    address_prefixes = ["10.0.3.0/24"]
   }
+  subnet_bastion = {
+    rgname           = "yugtodoapprg"
+    vnet             = "todo-vn"
+    address_prefixes = ["10.0.4.0/24"]
+  }
+
 }

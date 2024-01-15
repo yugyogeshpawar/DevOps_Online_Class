@@ -1,28 +1,29 @@
 vms = {
-  vm1 = {
-    name                  = "fronted-vm"
-    location              = "East Us"
-    resource_group_name   = "yugtodoapprg"
-    network_interface_ids = ["/subscriptions/b46c125c-073e-4204-83e3-4c2eef053249/resourceGroups/yugtodoapprg/providers/Microsoft.Network/networkInterfaces/todo-nic"]
-    vm_size               = "standard_ds2_v2"
-    osname                = "myosdisk1"
-  }
-  vm2 = {
-    name                  = "backend-vm"
-    location              = "East Us"
-    resource_group_name   = "yugtodoapprg"
-    network_interface_ids = ["/subscriptions/b46c125c-073e-4204-83e3-4c2eef053249/resourceGroups/yugtodoapprg/providers/Microsoft.Network/networkInterfaces/todo-backend-nic"]
-    vm_size               = "standard_ds2_v2"
-    osname                = "myosdisk2"
-  }
+  # vm1 = {
+  #   name                   = "fronted-vm"
+  #   location               = "East Us"
+  #   resource_group_name    = "yugtodoapprg"
+  #   network_interface_name = "todo-nic"
+  #   vm_size                = "standard_ds2_v2"
+  #   osname                 = "myosdisk1"
+  #   network_interface_ids  = ""
+  # }
+  # vm2 = {
+  #   name                   = "backend-vm"
+  #   location               = "East Us"
+  #   resource_group_name    = "yugtodoapprg"
+  #   network_interface_name = "front-todo-nic"
+  #   vm_size                = "standard_ds2_v2"
+  #   osname                 = "myosdisk2"
+  # }
 
-    vm3 = {
-    name                  = "fronted-vm2"
-    location              = "East Us"
-    resource_group_name   = "yugtodoapprg"
-    network_interface_ids = ["/subscriptions/b46c125c-073e-4204-83e3-4c2eef053249/resourceGroups/yugtodoapprg/providers/Microsoft.Network/networkInterfaces/todo-fronted2-nic"]
-    vm_size               = "standard_ds2_v2"
-    osname                = "myosdisk3"
-  }
+  # vm3 = {
+  #   name                   = "fronted-vm2"
+  #   location               = "East Us"
+  #   resource_group_name    = "yugtodoapprg"
+  #   network_interface_name = "todo-backend-nic"
+  #   vm_size                = "standard_ds2_v2"
+  #   osname                 = "myosdisk3"
+  # }
 
 }
