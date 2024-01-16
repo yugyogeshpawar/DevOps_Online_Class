@@ -1,7 +1,8 @@
 resource "azurerm_public_ip" "todopublicip" {
-  name                = "public-todo"
-  location            = "East Us"
-  resource_group_name = "yugtodoapprg"
+  for_each = var.ipps
+  name                = each.value.ipname
+  location            = each.value.location
+  resource_group_name = each.value.rgname
   allocation_method   = "Static"
   sku                 = "Standard"
 }

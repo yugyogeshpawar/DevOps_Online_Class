@@ -1,3 +1,3 @@
-variable "rgs" {
+variable "vnets" {
   type = map(any)
 }

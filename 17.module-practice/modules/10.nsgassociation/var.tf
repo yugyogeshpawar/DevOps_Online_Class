@@ -1,4 +1,3 @@
-variable "resource_group_name" {
-    type = string
-    default = "yugtodoapprg"
+variable "nsgassociation" {
+  type = map(any)
 }

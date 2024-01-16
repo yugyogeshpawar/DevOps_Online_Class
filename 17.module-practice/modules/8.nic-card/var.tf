@@ -1,3 +1,3 @@
-variable "rgs" {
+variable "nics" {
   
 }

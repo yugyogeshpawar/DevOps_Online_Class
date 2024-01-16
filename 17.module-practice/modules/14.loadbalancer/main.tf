@@ -1,52 +1,61 @@
 resource "azurerm_public_ip" "lb_public_ip" {
-  name                = "lb-public-ip"
-  location            = "East Us"
-  resource_group_name = "rg-1"
+  for_each            = var.lbs
+  name                = each.value.ipname
+  location            = each.value.location
+  resource_group_name = each.value.rgname
   allocation_method   = "Static"
 }
 
 
-resource "azurerm_lb" "example" {
-  name                = "todo-lb"
-  resource_group_name = "rg-1"
-  location            = "East Us"
+
+data "azurerm_network_interface" "existing_nic" {
+  for_each            = var.lbs
+  name                = each.value.nicname
+  resource_group_name = each.value.rgname
+}
+
+
+resource "azurerm_lb" "azlbblock" {
+  for_each            = var.lbs
+  name                = each.value.lbname
+  resource_group_name = each.value.rgname
+  location            = each.value.location
 
   frontend_ip_configuration {
-    name                 = "PublicIPAddress"
-    public_ip_address_id = azurerm_public_ip.lb_public_ip.id
+    name                 = each.value.ipname
+    public_ip_address_id = azurerm_public_ip.lb_public_ip[each.key].id
   }
 }
 
-resource "azurerm_lb_probe" "example" {
-  name            = "http-probe"
-  loadbalancer_id = azurerm_lb.example.id
+resource "azurerm_lb_probe" "azlbprob" {
+  for_each        = var.lbs
+  name            = each.value.lbprobname
+  loadbalancer_id = azurerm_lb.azlbblock[each.key].id
   protocol        = "Http"
   port            = 80
   request_path    = "/"
 }
 
 
-resource "azurerm_lb_backend_address_pool" "example" {
-  name            = "fronted-pool"
-  loadbalancer_id = azurerm_lb.example.id
+resource "azurerm_lb_backend_address_pool" "azlbbackend" {
+  for_each        = var.lbs
+  name            = each.value.lbbackendname
+  loadbalancer_id = azurerm_lb.azlbblock[each.key].id
 }
 
 
 
-resource "azurerm_lb_rule" "example" {
-  loadbalancer_id                = azurerm_lb.example.id
-  name                           = "frontendRule"
+resource "azurerm_lb_rule" "azlbrule" {
+  for_each                       = var.lbs
+  loadbalancer_id                = azurerm_lb.azlbblock[each.key].id
+  name                           = each.value.lbrulename
   protocol                       = "Tcp"
-  frontend_port                  = 80
-  backend_port                   = 80
-  frontend_ip_configuration_name = "PublicIPAddress"
-  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.example.id]
-  probe_id                       = azurerm_lb_probe.example.id
+  frontend_port                  = 22
+  backend_port                   = 22
+  frontend_ip_configuration_name = each.value.ipname
+  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.azlbbackend[each.key].id]
+  probe_id                       = azurerm_lb_probe.azlbprob[each.key].id
 }
 
 
-resource "azurerm_network_interface_backend_address_pool_association" "example" {
-  network_interface_id    = "/subscriptions/b46c125c-073e-4204-83e3-4c2eef053249/resourceGroups/rg-1/providers/Microsoft.Network/networkInterfaces/yogieee937"
-  ip_configuration_name   = "ipconfig1" # Change this to the actual name of your IP configuration
-  backend_address_pool_id = azurerm_lb_backend_address_pool.example.id
-}
+

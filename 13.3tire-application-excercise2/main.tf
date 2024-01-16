@@ -9,7 +9,7 @@ resource "azurerm_resource_group" "rg" {
 resource "azurerm_virtual_network" "vnet" {
   for_each = var.vm_config
 
-  name                = "${each.value.resource_group_name}-vnet"
+  name                = each.value.vnetname
   location            = azurerm_resource_group.rg[each.key].location
   resource_group_name = azurerm_resource_group.rg[each.key].name
   address_space       = ["10.0.0.0/16"]
@@ -35,7 +35,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                            = each.value.vm_size
   admin_username                  = each.value.admin_username
   admin_password                  = each.value.admin_password
-  disable_password_authentication = false # Set this to false to enable password authentication
+  disable_password_authentication = false 
 
   os_disk {
     caching              = "ReadWrite"

@@ -1,18 +1,15 @@
 data "azurerm_network_interface" "existing_nic" {
   for_each            = var.vms
-  name                = each.value.network_interface_name
-  resource_group_name = each.value.resource_group_name
+  name                = each.value.nicname
+  resource_group_name = each.value.rgname
 }
 
-# output "names_or_rg" {
-#   value = [for rg in data.azurerm_network_interface.existing_nic : rg.name]
-# }
 
 resource "azurerm_virtual_machine" "main" {
   for_each              = var.vms
-  name                  = each.value.name
+  name                  = each.value.vmname
   location              = each.value.location
-  resource_group_name   = each.value.resource_group_name
+  resource_group_name   = each.value.rgname
   network_interface_ids = [data.azurerm_network_interface.existing_nic[each.key].id]
   vm_size               = each.value.vm_size
 
