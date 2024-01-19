@@ -13,20 +13,20 @@ todoresource = {
     vm_size                 = "Standard_D1_v2"
     ipname                  = "publicip1"
   },
-  # vm2 = {
-  #   rgname                  = "yugrg1"
-  #   location                = "west us"
-  #   vnaddresspace           = ["10.0.0.0/16"]
-  #   vnetname                = "yugvnet1"
-  #   subnetname              = "subnet1"
-  #   address_prefixes_subnet = ["10.0.0.0/24"]
-  #   nicname                 = "front-todo-nic2"
-  #   nsgname                 = "securitygrouptodo"
-  #   vmname                  = "todofrontend2"
-  #   osname                  = "myosdisk2"
-  #   vm_size                 = "Standard_D1_v2"
-  #   ipname                  = "publicip2"
-  # }
+  vm2 = {
+    rgname                  = "yugrg1"
+    location                = "west us"
+    vnaddresspace           = ["10.0.0.0/16"]
+    vnetname                = "yugvnet1"
+    subnetname              = "subnet1"
+    address_prefixes_subnet = ["10.0.0.0/24"]
+    nicname                 = "front-todo-nic2"
+    nsgname                 = "securitygrouptodo"
+    vmname                  = "todofrontend2"
+    osname                  = "myosdisk2"
+    vm_size                 = "Standard_D1_v2"
+    ipname                  = "publicip2"
+  }
 }
 
 
@@ -59,17 +59,3 @@ azlbassociation = {
 
 
 
-# vm2 = {
-#   rgname                  = "yugrg1"
-#   location                = "west us"
-#   vnaddresspace           = ["10.0.0.0/16"]
-#   vnetname                = "yugvnet1"
-#   subnetname              = "subnet1"
-#   address_prefixes_subnet = ["10.0.0.0/24"]
-#   nicname                 = "front-todo-nic2"
-#   nsgname                 = "securitygrouptodo2"
-#   vmname                  = "todofrontend2"
-#   osname                  = "myosdisk2"
-#   vm_size                 = "Standard_D1_v2"
-#   ipname                  = "publicip2"
-# },

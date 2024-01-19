@@ -1,0 +1,156 @@
+todoresource = {
+  rg1 = {
+    rgname        = "yugrg1"
+    location      = "west us"
+    vnaddresspace = ["10.0.0.0/16"]
+    vnetname      = "yugvnet1"
+    subnetname    = "subnet1"
+  }
+}
+
+subnets = {
+  subnet1 = {
+    rgname                  = "yugrg1"
+    vnetname                = "yugvnet1"
+    subnetname              = "subnet1"
+    address_prefixes_subnet = ["10.0.0.0/24"]
+  }
+}
+
+
+nics = {
+  nic1 = {
+    rgname          = "yugrg1"
+    location        = "west us"
+    subnetname      = "subnet1"
+    vnetname        = "yugvnet1"
+    nicname         = "front-todo-nic"
+    availabilityset = "availabilityset1"
+    ipconfigname    = "publicip1"
+  }
+  nic2 = {
+    rgname          = "yugrg1"
+    location        = "west us"
+    subnetname      = "subnet1"
+    vnetname        = "yugvnet1"
+    nicname         = "front-todo-nic2"
+    availabilityset = "availabilityset1"
+    ipconfigname    = "publicip2"
+  }
+}
+
+nsgs = {
+  nsg1 = {
+    rgname     = "yugrg1"
+    location   = "west us"
+    vnetname   = "yugvnet1"
+    subnetname = "subnet1"
+    nicname    = "front-todo-nic"
+    nsgname    = "securitygrouptodo"
+    vmname     = "todofrontend1"
+  }
+}
+
+nsgassociation = {
+  nsgassociation1 = {
+    nicname = "front-todo-nic"
+    rgname  = "yugrg1"
+    nsgname = "securitygrouptodo"
+  }
+  nsgassociation2 = {
+    nicname = "front-todo-nic2"
+    rgname  = "yugrg1"
+    nsgname = "securitygrouptodo"
+  }
+}
+
+publicips = {
+  # pip1 = {
+  #   rgname   = "yugrg1"
+  #   location = "west us"
+  #   ipname   = "subnet1"
+  # }
+  # pip2 = {
+  #   rgname   = "yugrg1"
+  #   location = "west us"
+  #   ipname   = "publicip2"
+  # }
+}
+
+vms = {
+  vm1 = {
+    rgname     = "yugrg1"
+    location   = "west us"
+    vnetname   = "yugvnet1"
+    subnetname = "subnet1"
+    nicname    = "front-todo-nic"
+    nsgname    = "securitygrouptodo"
+    vmname     = "todofrontend1"
+    osname     = "myosdisk1"
+    vm_size    = "Standard_D1_v2"
+  }
+
+  # vm2 = {
+  #   rgname     = "yugrg1"
+  #   location   = "west us"
+  #   vnetname   = "yugvnet1"
+  #   subnetname = "subnet1"
+  #   nicname    = "front-todo-nic2"
+  #   nsgname    = "securitygrouptodo2"
+  #   vmname     = "todofrontend2"
+  #   osname     = "myosdisk2"
+  #   vm_size    = "Standard_D1_v2"
+  # }
+}
+
+
+
+basion = {
+  basion1 = {
+    subnetname       = "AzureBastionSubnet"
+    vnetname         = "yugvnet1"
+    rgname           = "yugrg1"
+    ipname           = "bastionip"
+    ipconfigname     = "publicipconfig1"
+    bastionname      = "yugbasion"
+    location         = "west us"
+    address_prefixes = ["192.168.1.224/27"]
+  }
+}
+
+
+lbs = {
+  # lb1 = {
+  #   lbname        = "todo-lb"
+  #   rgname        = "yugrg1"
+  #   location      = "west us"
+  #   lbprobname    = "lb-probe"
+  #   lbbackendname = "lb-backend-pool"
+  #   lbrulename    = "lb-rule"
+  #   ipname        = "PublicIPAddress"
+  # }
+}
+
+
+azlbassociation = {
+  # lb_association1 = {
+  #   lbname        = "todo-lb"
+  #   rgname        = "yugrg1"
+  #   nicname       = "front-todo-nic"
+  #   nsgname       = "securitygrouptodo"
+  #   ipname        = "publicip1"
+  #   lbbackendname = "lb-backend-pool"
+  #   ipconfigname  = "publicip1"
+  # }
+
+  # lb_association2 = {
+  #   lbname        = "todo-lb"
+  #   rgname        = "yugrg1"
+  #   nicname       = "front-todo-nic2"
+  #   nsgname       = "securitygrouptodo2"
+  #   ipname        = "publicip2"
+  #   lbbackendname = "lb-backend-pool"
+  #   ipconfigname  = "publicip2"
+  # }
+}
+

@@ -25,46 +25,45 @@ resource "azurerm_subnet" "subnet" {
 }
 
 
+resource "azurerm_linux_virtual_machine" "vm" {
+  for_each = var.vm_config
 
-# resource "azurerm_linux_virtual_machine" "vm" {
-#   for_each = var.vm_config
+  name                            = each.value.vm_name
+  resource_group_name             = azurerm_resource_group.rg[each.key].name
+  location                        = azurerm_resource_group.rg[each.key].location
+  size                            = each.value.vm_size
+  admin_username                  = each.value.admin_username
+  admin_password                  = each.value.admin_password
+  disable_password_authentication = false 
 
-#   name                            = each.value.vm_name
-#   resource_group_name             = azurerm_resource_group.rg[each.key].name
-#   location                        = azurerm_resource_group.rg[each.key].location
-#   size                            = each.value.vm_size
-#   admin_username                  = each.value.admin_username
-#   admin_password                  = each.value.admin_password
-#   disable_password_authentication = false 
+  os_disk {
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+  }
 
-#   os_disk {
-#     caching              = "ReadWrite"
-#     storage_account_type = "Standard_LRS"
-#   }
+  source_image_reference {
+    publisher = "Canonical"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts"
+    version   = "latest"
+  }
 
-#   source_image_reference {
-#     publisher = "Canonical"
-#     offer     = "0001-com-ubuntu-server-jammy"
-#     sku       = "22_04-lts"
-#     version   = "latest"
-#   }
+  network_interface_ids = [azurerm_network_interface.nic[each.key].id]
+}
 
-#   network_interface_ids = [azurerm_network_interface.nic[each.key].id]
-# }
+resource "azurerm_network_interface" "nic" {
+  for_each = var.vm_config
 
-# resource "azurerm_network_interface" "nic" {
-#   for_each = var.vm_config
+  name                = "${each.value.vm_name}-nic"
+  location            = azurerm_resource_group.rg[each.key].location
+  resource_group_name = azurerm_resource_group.rg[each.key].name
 
-#   name                = "${each.value.vm_name}-nic"
-#   location            = azurerm_resource_group.rg[each.key].location
-#   resource_group_name = azurerm_resource_group.rg[each.key].name
-
-#   ip_configuration {
-#     name                          = "internal"
-#     private_ip_address_allocation = "Dynamic"
-#     subnet_id                     = azurerm_subnet.subnet[each.key].id
-#   }
-# }
+  ip_configuration {
+    name                          = "internal"
+    private_ip_address_allocation = "Dynamic"
+    subnet_id                     = azurerm_subnet.subnet[each.key].id
+  }
+}
 
 # resource "azurerm_lb" "lb" {
 #   for_each = var.vm_config
