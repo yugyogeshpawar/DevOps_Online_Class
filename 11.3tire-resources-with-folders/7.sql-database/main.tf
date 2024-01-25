@@ -8,7 +8,6 @@ resource "azurerm_sql_database" "example" {
     environment = "staging"
   }
 
-  # prevent the possibility of accidental data loss
   lifecycle {
     prevent_destroy = false
   }

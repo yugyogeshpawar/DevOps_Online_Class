@@ -64,11 +64,11 @@ module "loadbalancer_association" {
   source          = "../../modules/15.loadbalancer-association"
   azlbassociation = var.azlbassociation
   depends_on      = [module.loadbalancer]
+  nics            = module.nic_card
 }
 
-# module "azurerm_availability_set" {
-#   source           = "../../modules/16.availabilityset"
-#   availabilitysets = var.availabilitysets
-#   depends_on       = [module.resource_group]
-# }
 
+
+output "nics" {
+  value = module.nic_card
+}

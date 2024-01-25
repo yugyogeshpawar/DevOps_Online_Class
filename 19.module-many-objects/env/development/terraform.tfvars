@@ -15,6 +15,12 @@ subnets = {
     subnetname              = "subnet1"
     address_prefixes_subnet = ["10.0.0.0/24"]
   }
+   subnet2 = {
+    rgname                  = "yugrg1"
+    vnetname                = "yugvnet1"
+    subnetname              = "AzureBastionSubnet"
+    address_prefixes_subnet = ["10.0.1.0/24"]
+  }
 }
 
 
@@ -90,17 +96,17 @@ vms = {
     vm_size    = "Standard_D1_v2"
   }
 
-  # vm2 = {
-  #   rgname     = "yugrg1"
-  #   location   = "west us"
-  #   vnetname   = "yugvnet1"
-  #   subnetname = "subnet1"
-  #   nicname    = "front-todo-nic2"
-  #   nsgname    = "securitygrouptodo2"
-  #   vmname     = "todofrontend2"
-  #   osname     = "myosdisk2"
-  #   vm_size    = "Standard_D1_v2"
-  # }
+  vm2 = {
+    rgname     = "yugrg1"
+    location   = "west us"
+    vnetname   = "yugvnet1"
+    subnetname = "subnet1"
+    nicname    = "front-todo-nic2"
+    nsgname    = "securitygrouptodo2"
+    vmname     = "todofrontend2"
+    osname     = "myosdisk2"
+    vm_size    = "Standard_D1_v2"
+  }
 }
 
 
@@ -111,46 +117,45 @@ basion = {
     vnetname         = "yugvnet1"
     rgname           = "yugrg1"
     ipname           = "bastionip"
-    ipconfigname     = "publicipconfig1"
+    ipconfigname     = "bastionip"
     bastionname      = "yugbasion"
     location         = "west us"
-    address_prefixes = ["192.168.1.224/27"]
   }
 }
 
 
 lbs = {
-  # lb1 = {
-  #   lbname        = "todo-lb"
-  #   rgname        = "yugrg1"
-  #   location      = "west us"
-  #   lbprobname    = "lb-probe"
-  #   lbbackendname = "lb-backend-pool"
-  #   lbrulename    = "lb-rule"
-  #   ipname        = "PublicIPAddress"
-  # }
+  lb1 = {
+    lbname        = "todo-lb"
+    rgname        = "yugrg1"
+    location      = "west us"
+    lbprobname    = "lb-probe"
+    lbbackendname = "lb-backend-pool"
+    lbrulename    = "lb-rule"
+    ipname        = "PublicIPAddress"
+  }
 }
 
 
 azlbassociation = {
-  # lb_association1 = {
-  #   lbname        = "todo-lb"
-  #   rgname        = "yugrg1"
-  #   nicname       = "front-todo-nic"
-  #   nsgname       = "securitygrouptodo"
-  #   ipname        = "publicip1"
-  #   lbbackendname = "lb-backend-pool"
-  #   ipconfigname  = "publicip1"
-  # }
+  lb_association1 = {
+    lbname        = "todo-lb"
+    rgname        = "yugrg1"
+    nicname       = "front-todo-nic"
+    nsgname       = "securitygrouptodo"
+    ipname        = "publicip1"
+    lbbackendname = "lb-backend-pool"
+    ipconfigname  = "publicip1"
+  }
 
-  # lb_association2 = {
-  #   lbname        = "todo-lb"
-  #   rgname        = "yugrg1"
-  #   nicname       = "front-todo-nic2"
-  #   nsgname       = "securitygrouptodo2"
-  #   ipname        = "publicip2"
-  #   lbbackendname = "lb-backend-pool"
-  #   ipconfigname  = "publicip2"
-  # }
+  lb_association2 = {
+    lbname        = "todo-lb"
+    rgname        = "yugrg1"
+    nicname       = "front-todo-nic2"
+    nsgname       = "securitygrouptodo2"
+    ipname        = "publicip2"
+    lbbackendname = "lb-backend-pool"
+    ipconfigname  = "publicip2"
+  }
 }
 
