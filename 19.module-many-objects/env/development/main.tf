@@ -5,7 +5,7 @@ module "resource_group" {
 
 module "virtual_network" {
   source     = "../../modules/4.virtual-network"
-  vnets      = var.todoresource
+  vnets      = var.vnets
   depends_on = [module.resource_group]
 }
 
@@ -15,9 +15,18 @@ module "subnet" {
   depends_on = [module.virtual_network, module.resource_group]
 }
 
+output "subnets_debug" {
+  value = var.subnets
+}
+
+output "nics_debug" {
+  value = var.nics
+}
+
 module "nic_card" {
   source     = "../../modules/8.nic-card"
   nics       = var.nics
+  subnets    = module.subnet.subnets
   depends_on = [module.subnet, module.resource_group, module.virtual_network]
 }
 
@@ -67,8 +76,16 @@ module "loadbalancer_association" {
   nics            = module.nic_card
 }
 
-
-
-output "nics" {
-  value = module.nic_card
+module "azappgateway" {
+  source      = "../../modules/17.application-gateway"
+  appgateways = var.appgateways
+  depends_on  = [module.vm, module.public_ip]
 }
+
+module "azappgatewayassociation" {
+  source                 = "../../modules/18.application-gateway-association"
+  appgatewaysassociation = var.azappassociation
+  depends_on             = [module.azappgateway]
+  nics                   = module.nic_card
+}
+

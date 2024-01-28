@@ -5,6 +5,9 @@ data "azurerm_subnet" "existing_subnet" {
   virtual_network_name = each.value.vnetname
   resource_group_name  = each.value.rgname
 }
+
+
+
 resource "azurerm_network_interface" "nic" {
   for_each            = var.nics
   name                = each.value.nicname

@@ -1,3 +1,6 @@
 variable "nics" {
   
 }
+
+variable "subnets" {
+}
