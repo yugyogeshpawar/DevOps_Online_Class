@@ -9,3 +9,13 @@ variable "location" {
 variable "azurerm" {
   
 }
+
+
+variable "azurerm2" {
+  
+}
+
+
+variable "azurerm3" {
+  
+}
