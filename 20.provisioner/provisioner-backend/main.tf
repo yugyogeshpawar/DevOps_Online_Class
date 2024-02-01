@@ -65,6 +65,17 @@ resource "azurerm_network_security_group" "example" {
     source_address_prefix      = "*"
     destination_address_prefix = "*"
   }
+   security_rule {
+    name                       = "test1223"
+    priority                   = 103
+    direction                  = "Inbound"
+    access                     = "Allow"
+    protocol                   = "Tcp"
+    source_port_range          = "*"
+    destination_port_range     = "8000"
+    source_address_prefix      = "*"
+    destination_address_prefix = "*"
+  }
 }
 
 resource "azurerm_subnet_network_security_group_association" "example" {
@@ -106,7 +117,7 @@ resource "azurerm_linux_virtual_machine" "vms" {
     timeout  = "2m"
   }
   provisioner "remote-exec" {
-    inline = ["sudo apt update", "sudo apt install nginx -y", "sudo git clone https://github.com/devopsinsiders/todoapp-backend-py.git","cd todoapp-backend-py", "sudo apt install python3",  "sudo apt install python3-pip -y","pip install -r requirements.txt","sudo apt-get update && sudo  apt-get install -y unixodbc unixodbc-dev","sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -", "sudo curl https://packages.microsoft.com/config/debian/10/prod.list > sudo /etc/apt/sources.list.d/mssql-release.list","sudo apt-get update", "sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17", "sudo su", "pip install -r requirements.txt && sudo su && apt-get update && apt-get install -y unixodbc unixodbc-dev && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list && apt-get update && ACCEPT_EULA=Y apt-get install -y msodbcsql17 && pip install -r requirements.txt && uvicorn app:app --host 0.0.0.0 --port 8000 &"
+    inline = ["sudo apt update", "sudo apt install nginx -y", "sudo git clone https://github.com/devopsinsiders/todoapp-backend-py.git","cd todoapp-backend-py", "sudo apt install python3",  "sudo apt install python3-pip -y","pip install -r requirements.txt","sudo apt-get update && sudo  apt-get install -y unixodbc unixodbc-dev","sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -", "sudo curl https://packages.microsoft.com/config/debian/10/prod.list > sudo /etc/apt/sources.list.d/mssql-release.list","sudo apt-get update", "sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17", "sudo su", " sudo pip install -r requirements.txt && sudo apt-get update && sudo apt-get install -y unixodbc unixodbc-dev && sudo curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && sudo curl https://packages.microsoft.com/config/debian/10/prod.list > /etc/apt/sources.list.d/mssql-release.list && apt-get update && sudo ACCEPT_EULA=Y apt-get install -y msodbcsql17 && sudo pip install -r requirements.txt && sudo uvicorn app:app --host 0.0.0.0 --port 8000 &"
     ]
   }
   provisioner "local-exec" {
