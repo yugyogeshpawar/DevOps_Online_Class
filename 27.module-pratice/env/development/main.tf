@@ -3,9 +3,11 @@ module "resource_group" {
   rgs    = var.todoresource
 }
 
+
 module "virtual_network" {
   source     = "../../modules/4.virtual-network"
   vnets      = var.vnets
+  locations = module.resource_group.location
   depends_on = [module.resource_group]
 }
 
@@ -22,11 +24,6 @@ module "nic_card" {
   depends_on = [module.subnet, module.resource_group, module.virtual_network]
 }
 
-// write output for nic and itterate id in a variable
-
-output "nic_ids" {
-  value = module.nic_card.nic_ids
-}
 
 module "nsg" {
   source     = "../../modules/9.nsg"

@@ -25,10 +25,8 @@ resource "azurerm_network_interface" "nic" {
   }
 }
 
-// write output for nic and itterate id in a variable
-
 output "nic_ids" {
-  value = { for k, v in azurerm_network_interface.nic : k => v.id }
+  value = { for k, v in azurerm_network_interface.nic : v.name => v.id }
 }
 
 

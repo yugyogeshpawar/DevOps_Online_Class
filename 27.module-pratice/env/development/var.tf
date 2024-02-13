@@ -59,7 +59,13 @@ variable "azappassociation" {
 }
 
 
+
 variable "vnets" {
   default = {}
-  type = map(any)
+  type = map(object({
+    rgname     = string
+    vnaddresspace = list(string)
+    location = optional(string)
+    vnetname = string
+  }))
 }
