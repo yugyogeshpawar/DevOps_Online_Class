@@ -34,3 +34,5 @@ crash.log
 # Exclude all .terraform directories
 **/.terraform/
 **/.terraform.lock.hcl
+
+.DS_Store

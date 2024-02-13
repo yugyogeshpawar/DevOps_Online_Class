@@ -1,0 +1,3 @@
+variable "appgateways" {
+    default = "gateway"
+}

@@ -1,0 +1,8 @@
+apiVersion: v1 # Ye bata raha hai ki hum kis version ka Kubernetes API use kar rahe hain.
+kind: Pod # Ye batata hai ki hum kya create kar rahe hain, yahaan par ek Pod.
+metadata:
+  name: simple-webserver # Ye hamare pod ka naam hai, aap isse kuch bhi naam de sakte hain.
+spec:
+  containers: # Yahaan hum batayenge ki humare pod mein kya containers hain.
+  - name: webserver # Container ka naam.
+    image: nginx # Kaun si image use karni hai, yahaan par nginx.
