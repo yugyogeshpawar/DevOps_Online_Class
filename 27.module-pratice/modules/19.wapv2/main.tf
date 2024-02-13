@@ -1,31 +1,35 @@
 data "azurerm_resource_group" "example" {
-  name = "Amar-RG01"
-}
-
-data "azurerm_web_application_firewall_policy" "example" {
-  resource_group_name = "Amar-RG01"
-  name                = "applicationwaf01"
+  for_each = var.appgateways
+  name     = each.value.rgname
 }
 
 
 data "azurerm_subnet" "example" {
-  name                 = "subnet2"
-  resource_group_name  = "Amar-RG01"
-  virtual_network_name = "vnet01"
+  for_each             = var.appgateways
+  name                 = each.value.subnetname
+  resource_group_name  = each.value.rgname
+  virtual_network_name = each.value.vnetname
 }
 
 
 data "azurerm_public_ip" "example" {
-  name                = "LBIP"
-  resource_group_name = data.azurerm_resource_group.example.name
+  for_each            = var.appgateways
+  name                = each.value.ipname
+  resource_group_name = each.value.rgname
 }
 
 
+data "azurerm_web_application_firewall_policy" "example" {
+  for_each            = var.appgateways
+  resource_group_name = data.azurerm_resource_group.example[each.key].name
+  name                = each.value.wafpolicy
+}
 
 resource "azurerm_application_gateway" "network" {
-  name                = "example-appgateway"
-  resource_group_name = data.azurerm_resource_group.example.name
-  location            = data.azurerm_resource_group.example.location
+  for_each            = var.appgateways
+  name                = each.value.appgatewayname
+  resource_group_name = data.azurerm_resource_group.example[each.key].name
+  location            = data.azurerm_resource_group.example[each.key].location
 
   sku {
     name     = "WAF_v2"
@@ -33,22 +37,22 @@ resource "azurerm_application_gateway" "network" {
     capacity = 2
   }
 
-  firewall_policy_id = data.azurerm_web_application_firewall_policy.example.id
+  firewall_policy_id = data.azurerm_web_application_firewall_policy.example[each.key].id
 
 
   gateway_ip_configuration {
-    name      = "my-gateway-ip-configuration"
-    subnet_id = data.azurerm_subnet.example.id
+    name      = "${each.value.appgatewayname}-gwipcfg"
+    subnet_id = data.azurerm_subnet.example[each.key].id
   }
 
   frontend_port {
-    name = "example-frontend-port"
+    name = "${each.value.appgatewayname}-feport"
     port = 80
   }
 
   frontend_ip_configuration {
-    name                 = "my-frontend-ip"
-    public_ip_address_id = data.azurerm_public_ip.example.id
+    name                 = "${each.value.appgatewayname}-feip"
+    public_ip_address_id = data.azurerm_public_ip.example[each.key].id
   }
 
   backend_address_pool {
@@ -56,29 +60,29 @@ resource "azurerm_application_gateway" "network" {
   }
 
   backend_http_settings {
-    name                  = "example-http-settings"
+    name                  = "${each.value.appgatewayname}-be-htst"
     cookie_based_affinity = "Disabled"
-    path                  = "/path1/"
+    path                  = "/"
     port                  = 80
     protocol              = "Http"
     request_timeout       = 60
   }
 
   http_listener {
-    name                           = "example-http-listener"
-    frontend_ip_configuration_name = "my-frontend-ip"
-    frontend_port_name             = "example-frontend-port"
+    name                           = "${each.value.appgatewayname}-httplstn"
+    frontend_ip_configuration_name = "${each.value.appgatewayname}-feip"
+    frontend_port_name             = "${each.value.appgatewayname}-feport"
     protocol                       = "Http"
   }
 
 
 
   request_routing_rule {
-    name                       = "example-request-routing-rule"
+    name                       = "${each.value.appgatewayname}-rqrt"
     priority                   = 9
     rule_type                  = "Basic"
-    http_listener_name         = "example-http-listener"
-    backend_address_pool_name  = "my-backend-pool"
-    backend_http_settings_name = "example-http-settings"
+    http_listener_name         = "${each.value.appgatewayname}-httplstn"
+    backend_address_pool_name  = "${each.value.appgatewayname}-beap"
+    backend_http_settings_name = "${each.value.appgatewayname}-be-htst"
   }
 }
