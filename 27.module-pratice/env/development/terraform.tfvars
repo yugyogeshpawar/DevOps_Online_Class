@@ -1,6 +1,6 @@
 todoresource = {
   rg1 = {
-    rgname   = "yugrg4"
+    rgname   = "yugrg5"
     location = "west us"
   }
   rg2 = {
