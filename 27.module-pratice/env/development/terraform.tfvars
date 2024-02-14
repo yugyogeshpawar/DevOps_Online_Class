@@ -1,6 +1,6 @@
 todoresource = {
   rg1 = {
-    rgname   = "yugrg1"
+    rgname   = "yugrg4"
     location = "west us"
   }
   rg2 = {
@@ -12,7 +12,7 @@ todoresource = {
 
 vnets = {
   vnet1 = {
-    rgname        = "yugrg1"
+    rgname        = "yugrg5"
     vnaddresspace = ["10.0.0.0/16"]
     vnetname      = "yugvnet1"
     location      = "central india"
