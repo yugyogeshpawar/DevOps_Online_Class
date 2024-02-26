@@ -15,6 +15,7 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/1.create-resource-group-azure'
         backendServiceArm: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
         backendAzureRmResourceGroupName: 'havenzHome'
         backendAzureRmStorageAccountName: 'azureyuvacoin'
@@ -23,7 +24,6 @@ stages:
 
 - stage: Terraform_Plan
   displayName: Terraform plan
-  dependsOn: Terraform_Init
   jobs:
   - job: Job2
     displayName: Terraform plan
