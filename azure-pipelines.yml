@@ -1,51 +1,51 @@
-trigger:
-- main
+trigger: none
 
 pool:
   vmImage: ubuntu-latest
 
 stages:
-- stage: Terraform_Init
-  displayName: Terraform Init
+- stage: Terraforminit
+  displayName: Terraform init
+  pool: 
+    vmImage= ubuntu-latest
   jobs:
-  - job: Job1
-    displayName: Terraform Init
-    steps:
+  - job: Terraforminit
+    displayName: Terraforminit
+    pool: 
+      vmImage: ubuntu-latest
+    steps: 
     - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/1.create-resource-group-azure'
-        backendServiceArm: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
-        backendAzureRmResourceGroupName: 'havenzHome'
-        backendAzureRmStorageAccountName: 'azureyuvacoin'
-        backendAzureRmContainerName: 'yuvacoincontainer'
-        backendAzureRmKey: 'working.working'
+        backendServiceArm: 'pawanservice'
+        backendAzureRmResourceGroupName: 'DoNotDeleteBackend'
+        backendAzureRmStorageAccountName: 'backendsa4subho'
+        backendAzureRmContainerName: 'pawancon'
+        backendAzureRmKey: 'modules.terraform.tfstate'
 
-- stage: Terraform_Plan
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'validate'
+
+
+- stage: Terraformplan
   displayName: Terraform plan
+  pool: 
+    vmImage= ubuntu-latest
   jobs:
-  - job: Job2
+  - job: Terraformplan
     displayName: Terraform plan
-    steps:
+    pool: 
+      vmImage: ubuntu-latest
+    steps: 
     - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
         command: 'init'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/1.create-resource-group-azure'
-        backendServiceArm: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
-        backendAzureRmResourceGroupName: 'havenzHome'
-        backendAzureRmStorageAccountName: 'azureyuvacoin'
-        backendAzureRmContainerName: 'yuvacoincontainer'
-        backendAzureRmKey: 'working.working'
-      
-  - job: Job3   
-    displayName: Terraform plan
-    steps:
-    - task: TerraformTaskV4@4
-      inputs:
-        provider: 'azurerm'
-        command: 'plan'
-        workingDirectory: '$(System.DefaultWorkingDirectory)/1.create-resource-group-azure'
-        environmentServiceNameAzureRM: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
-      
+        backendServiceArm: 'pawanservice'
+        backendAzureRmResourceGroupName: 'DoNotDeleteBackend'
+        backendAzureRmStorageAccountName: 'backendsa4subho'
+        backendAzureRmContainerName: 'pawancon'
+        backendAzureRmKey: 'modules.terraform.tfstate'
