@@ -4,11 +4,32 @@ trigger:
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+stages:
+- stage: Terraform_Init
+  displayName: Terraform Init
+  jobs:
+  - job: Job1
+    displayName: Terraform Init
+    steps:
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        backendServiceArm: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
+        backendAzureRmResourceGroupName: 'havenzHome'
+        backendAzureRmStorageAccountName: 'azureyuvacoin'
+        backendAzureRmContainerName: 'yuvacoincontainer'
+        backendAzureRmKey: 'working.working'
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+- stage: Terraform_Plan
+  displayName: Terraform plan
+  dependsOn: Terraform_Init
+  jobs:
+  - job: Job2
+    displayName: Terraform plan
+    steps:
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        environmentServiceNameAzureRM: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
