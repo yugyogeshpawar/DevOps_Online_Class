@@ -32,4 +32,5 @@ stages:
       inputs:
         provider: 'azurerm'
         command: 'plan'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/1.create-resource-group-azure'
         environmentServiceNameAzureRM: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
