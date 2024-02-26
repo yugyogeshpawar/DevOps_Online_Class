@@ -29,8 +29,23 @@ stages:
     displayName: Terraform plan
     steps:
     - task: TerraformTaskV4@4
+    inputs:
+      provider: 'azurerm'
+      command: 'init'
+      workingDirectory: '$(System.DefaultWorkingDirectory)/1.create-resource-group-azure'
+      backendServiceArm: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
+      backendAzureRmResourceGroupName: 'havenzHome'
+      backendAzureRmStorageAccountName: 'azureyuvacoin'
+      backendAzureRmContainerName: 'yuvacoincontainer'
+      backendAzureRmKey: 'working.working'
+      
+  - job: Job3   
+    displayName: Terraform plan
+    steps:
+    - task: TerraformTaskV4@4
       inputs:
         provider: 'azurerm'
         command: 'plan'
         workingDirectory: '$(System.DefaultWorkingDirectory)/1.create-resource-group-azure'
         environmentServiceNameAzureRM: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
+      
