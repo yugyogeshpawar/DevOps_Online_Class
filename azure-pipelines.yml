@@ -1,0 +1,49 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+stages:
+- stage: Terraforminit
+  displayName: Terraform init
+  pool: 
+    vmImage= ubuntu-latest
+  jobs:
+  - job: Terraforminit
+    displayName: Terraforminit
+    pool: 
+      vmImage: ubuntu-latest
+    steps: 
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'init'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/29.practice-vm-with-ssh-key'
+        backendServiceArm: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
+        backendAzureRmResourceGroupName: 'havenzHome'
+        backendAzureRmStorageAccountName: 'azureyuvacoin'
+        backendAzureRmContainerName: 'yuvacoincontainer'
+        backendAzureRmKey: 'wokring.wokring'
+
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'validate'
+
+
+- stage: Terraformplan
+  displayName: Terraform plan
+  pool: 
+    vmImage= ubuntu-latest
+  jobs:
+  - job: Terraformplan
+    displayName: Terraform plan
+    pool: 
+      vmImage: ubuntu-latest
+    steps: 
+    - task: TerraformTaskV4@4
+      inputs:
+        provider: 'azurerm'
+        command: 'plan'
+        workingDirectory: '$(System.DefaultWorkingDirectory)/29.practice-vm-with-ssh-key'
+        environmentServiceNameAzureRM: 'Free Trial (6fceb84b-3870-4349-a92e-9ea46c15d50d)'
