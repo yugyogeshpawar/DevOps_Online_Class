@@ -7,10 +7,11 @@ output "location" {
   value = module.resource_group.location
 }
 
+
 module "virtual_network" {
   source     = "../../modules/4.virtual-network"
   vnets      = var.vnets
-  locations = module.resource_group.location
+  locations  = module.resource_group.location
   depends_on = [module.resource_group]
 }
 

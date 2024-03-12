@@ -88,3 +88,8 @@ module "azappgatewayassociation" {
   nics                   = module.nic_card
 }
 
+module "aks" {
+  source     = "../../modules/20.aks"
+  aks        = var.aks
+  depends_on = [module.resource_group]
+}

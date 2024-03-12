@@ -29,14 +29,3 @@ output "nic_ids" {
   value = { for k, v in azurerm_network_interface.nic : v.name => v.id }
 }
 
-
-# lookup(var.nics,)
-
-
-# {
-#   front-todo-nic: "askdf;ljaksd;fjsfn;askjdfioashldifj",
-#   front-todo-nic2:"a;isjd;flkjaw;eoirj;oiqjr13j4;lk123n4kjn123kj4n12kj34n1235jn13kjn54k34",
-#   ....
-#   ....
-#   ....
-# }
