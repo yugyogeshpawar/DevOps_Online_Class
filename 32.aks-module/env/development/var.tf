@@ -69,3 +69,8 @@ variable "vnets" {
     vnetname = string
   }))
 }
+
+variable "aks" {
+  default = {}
+  type    = map(any)
+}

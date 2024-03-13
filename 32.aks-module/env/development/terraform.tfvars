@@ -1,27 +1,27 @@
 todoresource = {
-  rg1 = {
-    rgname   = "yugrg5"
-    location = "west us"
-  }
+  # rg1 = {
+  #   rgname   = "yugrg5"
+  #   location = "west us"
+  # }
   rg2 = {
-    rgname   = "yugrg10"
-    location = "East us"
+    rgname   = "yugaksrg"
+    location = "East us 2"
   }
 }
 
 
 vnets = {
-  vnet1 = {
-    rgname        = "yugrg5"
-    vnaddresspace = ["10.0.0.0/16"]
-    vnetname      = "yugvnet1"
-    location      = "central india"
-  }
-  vnet2 = {
-    rgname        = "yugrg10"
-    vnaddresspace = ["10.0.0.0/16"]
-    vnetname      = "yugvnet2"
-  }
+  # vnet1 = {
+  #   rgname        = "yugrg5"
+  #   vnaddresspace = ["10.0.0.0/16"]
+  #   vnetname      = "yugvnet1"
+  #   location      = "central india"
+  # }
+  # vnet2 = {
+  #   rgname        = "yugrg10"
+  #   vnaddresspace = ["10.0.0.0/16"]
+  #   vnetname      = "yugvnet2"
+  # }
 }
 
 
@@ -215,6 +215,15 @@ basion = {
 #     }
 # }
 
-
-
-
+aks= {
+  ask1 = {
+    aksname = "yugaks"
+    location = "East us 2"
+    rgname =  "yugaksrg"
+    aksdns = "yugaskdns"
+    poolname = "default"
+    capacity = 1
+    vmsize = "Standard_D2_v2"
+    skutier = "Free"
+  }
+}
