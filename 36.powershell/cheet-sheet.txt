@@ -1,0 +1,63 @@
+Install-Module -Name Az -AllowClobber -Scope CurrentUser
+   9       34.035 Install-Module -Name Az -AllowClobber -Scope CurrentUser
+  10     3:20.387 Install-Module -Name Az -AllowClobber -Scope CurrentUser
+  11     2:52.808 Connect-AzAccount
+  12       11.206 Connect-AzAccount
+  13        0.018 history
+  14        2.443 Get-AzSubscription
+  15        2.222 Get-AzVM -ResourceGroupName MC_yugaksrg_yugaks_eastus2
+  16        0.687 Get-AzVM -ResourceGroupName MC_yugaksrg_yugaks_eastus2
+  17        0.888 Get-AzVirtualNetw
+  18        7.510 Get-AzVirtualNetwork
+  19        0.986 Get-AzLoadBalancer
+  20       13.562 Connect-AzAccount
+  21        0.057 Import-Module ActiveDirectory
+  22        0.089 Get-ADUser
+  23       16.631 Install-Module AzureAD
+  24        0.122 Connect-AzureAD
+  25        0.153 Connect-AzureAD
+  26        0.067 Connect-AzureAD: The term 'Connect-AzureAD' is not recognized as a name of a cmdlet, function, script file, or executable progra…
+  27        4.412 Install-Module AzureAD
+  28       14.438 Connect-AzAccount
+  29        7.847 Install-Module -Name Az -AllowClobber -Scope CurrentUser
+  30        3.669 Get-AzADUser
+  31        0.087 Get-AzureADUser
+  32        0.157 Add-WindowsFeature RSAT-AD-PowerShell
+  33        0.089 Add-WindowsFeature RSAT-AD-PowerShell
+  34        0.029 Import-Module ActiveDirectory
+  35        0.112 Get-ADUser -Identity "username"
+  36        4.022 Install-Module AzureAD
+  37        0.132 Import-Module AzureAD
+  38        0.185 Connect-AzureAD
+  39        0.056 Import-Module AzureAD
+  40        8.861 Uninstall-Module AzureAD
+  41       13.230 Install-Module -Name AzureAD.Standard.Preview
+  42        0.256  Import-Module AzureAD.Standard.Preview
+  43       58.166 Connect-AzureAD
+  44        0.743 Get-AzADUser
+  45        0.452 Get-AzADGroup
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  New-AzureADUser -AccountEnabled $true `
+                -DisplayName "PawanUser" `
+                -PasswordProfile @{ ForceChangePasswordNextLogin = $true; Password = "Pawan@1234" } `
+                -UserPrincipalName "yogieee6094@gmail.com" `
+                -MailNickName "PawanUser"

@@ -223,7 +223,7 @@ aks= {
     aksdns = "yugaskdns"
     poolname = "default"
     capacity = 1
-    vmsize = "Standard_D2_v2"
+    vmsize = "Standard_DS3_v2"
     skutier = "Free"
   }
 }

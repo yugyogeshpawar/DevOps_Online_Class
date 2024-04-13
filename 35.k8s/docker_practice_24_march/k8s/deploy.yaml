@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nx
+  template:
+    metadata:
+      labels:
+        app: nx
+    spec:
+      containers:
+      - name: c1
+        image: nginx
+        ports:
+        - containerPort: 80
