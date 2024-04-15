@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: real-estate-for-all
+  template:
+    metadata:
+      labels:
+        app: real-estate-for-all
+    spec:
+      containers:
+        - name: real-estate-for-all
+          image: {{ .Values.image }}
+          ports:
+            - containerPort: 3000

@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: real-estate-for-all
+  template:
+    metadata:
+      labels:
+        app: real-estate-for-all
+    spec:
+      containers:
+        - name: real-estate-for-all
+          image: yugacr.azurecr.io/frontend:$(Build.BuildId)
+          ports:
+            - containerPort: 3000
+      imagePullSecrets:
+        - name: acr-auth
