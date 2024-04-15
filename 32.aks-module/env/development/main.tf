@@ -95,6 +95,3 @@ module "aks" {
   
 }
 
-
-
-# terraform apply --auto-approve
