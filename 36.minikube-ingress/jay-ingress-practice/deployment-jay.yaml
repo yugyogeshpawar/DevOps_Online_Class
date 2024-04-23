@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jayapp
+spec:
+  selector:
+    matchLabels:
+      app: jayapp
+  template:
+    metadata:
+      labels:
+        app: jayapp
+    spec:
+      containers:
+      - name: jayapp
+        image: jaylunagariya/jay:v1
+        ports:
+        - containerPort: 80

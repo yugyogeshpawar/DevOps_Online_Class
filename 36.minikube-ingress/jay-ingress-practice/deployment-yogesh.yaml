@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yogeshapp
+spec:
+  selector:
+    matchLabels:
+      app: yogeshapp
+  template:
+    metadata:
+      labels:
+        app: yogeshapp
+    spec:
+      containers:
+      - name: yogeshapp
+        image: jaylunagariya/jay:y2
+        ports:
+        - containerPort: 80
