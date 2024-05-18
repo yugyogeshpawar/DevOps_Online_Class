@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: todoservice
+spec:
+  replicas: 3
+  selector:
+    matchExpressions:
+      - key: name
+        operator: In
+        values:
+          - todoservice
+  template:
+    metadata:
+      labels:
+        name: todoservice
+    spec:
+      containers:
+        - name: todoservice
+          image: yugyogeshpawar/todoservice
+          ports:
+            - containerPort: 80
+

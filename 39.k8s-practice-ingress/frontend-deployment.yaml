@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment3
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+      - name: frontend-container3
+        image: yugyogeshpawar/yug-projects:frontend3
+        ports:
+        - containerPort: 80 # Adjust if your container listens on a different port
+

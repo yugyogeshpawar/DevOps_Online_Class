@@ -1,0 +1,4 @@
+Driver={ODBC Driver 17 for SQL Server};Server=tcp:monotodoapp.database.windows.net,1433;Database=yugdb;Uid=yug;Pwd=Yogesh@72448;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;
+
+
+

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: microfrontend
+  labels:
+    name: microfrontend
+spec:
+  containers:
+    - name: microfrontend
+      image: yugyogeshpawar/microtodofrontend
+      ports:
+        - containerPort: 80
+

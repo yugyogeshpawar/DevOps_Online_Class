@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yug-deploy
+spec:
+  selector:
+    matchLabels:
+      app: yug
+  template:
+    metadata:
+      labels:
+        app: yug
+    spec:
+      containers:
+      - name: yug
+        image: jaylunagariya/jay:y2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+
