@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-add-task
+  labels:
+    app: addtask
+  namespace: default
+spec:
+  replicas: 2
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - addtask
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: addtask
+      name: micro-add-task
+      namespace: default
+    spec:
+      containers:
+        - name: micro-add-task
+          image: yugyogeshpawar/addtaskmicro
+          ports:
+            - containerPort: 8000
+          env:
+            - name: CONNECTION_STRING
+              value: "Driver={ODBC Driver 17 for SQL Server};Server=tcp:micro-db.database.windows.net,1433;Database=micro-db;Uid=adminuser;Pwd=Aduser@1234;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
+            

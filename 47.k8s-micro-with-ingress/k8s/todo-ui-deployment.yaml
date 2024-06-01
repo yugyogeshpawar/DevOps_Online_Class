@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-ui
+  labels:
+    app: frontend
+  namespace: default
+spec:
+  replicas: 5
+  selector:
+    matchExpressions:
+      - key: app
+        operator: In
+        values:
+          - frontend
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+  template:
+    metadata:
+      labels:
+        app: frontend
+      name: frontend-micro-ui
+      namespace: default
+    spec:
+      containers:
+        - name: frontend
+          image: pawan7409/microtodoui:v2
+          ports:
+            - containerPort: 80
+              
+
+
+
+
+
+
+
+              
+              
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: myapp
+# spec:
+#   selector:
+#     app: myapp
+#   ports:
+#   - port: <Port>
+#     targetPort: <Target Port>
