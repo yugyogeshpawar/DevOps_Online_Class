@@ -1,8 +1,19 @@
-- **What is Azure?**: Azure is a cloud service provided by Microsoft. It allows you to use computers and storage in the cloud instead of your own computer.
-- **What is an Azure VM?**: An Azure VM, or Virtual Machine, is like a computer that's stored in the cloud. You can use it to run your programs and store your data.
-- **What is Azure Storage?**: Azure Storage is like a big box that you can store your data in. It's safe and can be used by many computers at the same time.
-- **What is Azure Active Directory?**: Azure Active Directory is like a big book of passwords for your cloud accounts. It helps you keep track of who has access to your cloud stuff.
-- **What is Azure App Service?**: Azure App Service is like a big box that makes it easy to build, run, and grow web applications. You can use it to make your own website or app.
+# Azure Questions
+
+1. Question: What is Azure?
+   Answer: Azure is a cloud service provided by Microsoft. It allows you to use computers and storage in the cloud instead of your own computer.
+
+2. Question: What is an Azure VM?
+   Answer: An Azure VM, or Virtual Machine, is like a computer that's stored in the cloud. You can use it to run your programs and store your data.
+
+3. Question: What is Azure Storage?
+   Answer: Azure Storage is like a big box that you can store your data in. It's safe and can be used by many computers at the same time.
+
+4. Question: What is Azure Active Directory?
+   Answer: Azure Active Directory is like a big book of passwords for your cloud accounts. It helps you keep track of who has access to your cloud stuff.
+
+5. Question: What is Azure App Service?
+   Answer: Azure App Service is like a big box that makes it easy to build, run, and grow web applications. You can use it to make your own website or app.
 
 6. Question: What is Azure Functions?
    Answer: Azure Functions is a serverless compute service that allows you to run small pieces of code, or "functions," in response to various events.
@@ -48,7 +59,6 @@
 
 20. Question: What is Azure Managed Disks?
     Answer: Azure Managed Disks is a cloud-based storage service that provides persistent block storage for Azure virtual machines.
-<<<<<<<<<<<<<<  ✨ Codeium Command ⭐ >>>>>>>>>>>>>>>>
 
 21. Question: What is Azure Blueprints?
     Answer: Azure Blueprints is a cloud-based service that provides a framework for defining and managing organization-wide standards, policies, and patterns for deploying resources.
@@ -79,4 +89,5 @@
 
 30. Question: What is Azure Test Plans?
     Answer: Azure Test Plans is a cloud-based service that provides test management capabilities for software development, including test case management, test plan management, and test automation.
-<<<<<<<  415918c6-66bf-4fe7-aa86-2d977e1984f8  >>>>>>>
+
+d
