@@ -1,31 +1,31 @@
 ## Azure Questions
 
 ### 1. Question: What is Azure?
-   Answer: Azure is a cloud service provided by Microsoft. It allows you to use computers and storage in the cloud instead of your own computer. 
+    Answer: Azure is a cloud service provided by Microsoft. It allows you to use computers and storage in the cloud instead of your own computer. 
 
 ### 2. Question: What is an Azure VM?
-   Answer: An Azure VM, or Virtual Machine, is like a computer that's stored in the cloud. You can use it to run your programs and store your data. 
+    Answer: An Azure VM, or Virtual Machine, is like a computer that's stored in the cloud. You can use it to run your programs and store your data. 
 
 ### 3. Question: What is Azure Storage?
-   Answer: Azure Storage is like a big box that you can store your data in. It's safe and can be used by many computers at the same time. This storage can be used for various purposes such as storing files, databases, and even virtual machines.
+    Answer: Azure Storage is like a big box that you can store your data in. It's safe and can be used by many computers at the same time. This storage can be used for various purposes such as storing files, databases, and even virtual machines.
 
 ### 4. Question: What is Azure Active Directory?
-   Answer: Azure Active Directory is like a big book of passwords for your cloud accounts. It helps you keep track of who has access to your cloud stuff.
+    Answer: Azure Active Directory is like a big book of passwords for your cloud accounts. It helps you keep track of who has access to your cloud stuff.
 
 ### 5. Question: What is Azure App Service?
-   Answer: Azure App Service is like a big box that makes it easy to build, run, and grow web applications. You can use it to make your own website or app.
+    Answer: Azure App Service is like a big box that makes it easy to build, run, and grow web applications. You can use it to make your own website or app.
 
 ### 6. Question: What is Azure Functions?
-   Answer: Azure Functions is a serverless compute service that allows you to run small pieces of code, or "functions," in response to various events.
+    Answer: Azure Functions is a serverless compute service that allows you to run small pieces of code, or "functions," in response to various events.
 
 ### 7. Question: What is Azure Event Hubs?
-   Answer: Azure Event Hubs is a fully managed, real-time data ingestion service that can handle high-volume data streams.
+    Answer: Azure Event Hubs is a fully managed, real-time data ingestion service that can handle high-volume data streams.
 
 ### 8. Question: What is Azure Blob Storage?
-   Answer: Azure Blob Storage is a cloud-based storage solution that is optimized for storing massive amounts of unstructured data.
+    Answer: Azure Blob Storage is a cloud-based storage solution that is optimized for storing massive amounts of unstructured data.
 
 ### 9. Question: What is Azure Cosmos DB?
-   Answer: Azure Cosmos DB is a globally distributed, multi-model database service that supports various data models including document, key-value, and graph databases.
+    Answer: Azure Cosmos DB is a globally distributed, multi-model database service that supports various data models including document, key-value, and graph databases.
 
 ### 10. Question: What is Azure SQL Database?
     Answer: Azure SQL Database is a cloud-based relational database service that is a fully managed, scalable, and secure database service.
