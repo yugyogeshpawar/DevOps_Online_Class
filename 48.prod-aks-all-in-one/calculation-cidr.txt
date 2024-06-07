@@ -1,0 +1,35 @@
+
+
+32 - 25 =  7 
+2 to the power 7
+
+
+128 - 4 = 124 
+
+
+
+1st networkin 0.0.0.0
+2nd default gateway 0.0.0.1
+3rd alternate dns 0.0.0.2
+4th broadcasting 0.0.0.255
+
+
+
+#next 
+
+
+
+32 - 16 = 16
+
+2 to the power 16
+
+65536 - 4 = 65532
+
+1st networkin 0.0.0.0
+2nd default gateway 0.0.0.1
+3rd alternate dns 0.0.0.2
+4th broadcasting 0.0.0.255
+
+
+
+

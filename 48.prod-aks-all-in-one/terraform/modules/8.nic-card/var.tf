@@ -1,0 +1,6 @@
+variable "nics" {
+  
+}
+
+variable "subnets" {
+}

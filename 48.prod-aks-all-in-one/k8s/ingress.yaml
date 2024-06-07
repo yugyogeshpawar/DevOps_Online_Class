@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress-nginx
+  labels:
+    name: myingress
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: yogesh.ajdairyagro.online
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service: 
+            name: myapp
+            port: 
+              number: 80
