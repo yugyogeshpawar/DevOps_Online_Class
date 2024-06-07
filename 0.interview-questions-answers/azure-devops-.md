@@ -58,31 +58,43 @@ To connect Azure VMs in different subscriptions, you can use peering, VPN, or Az
 - Serves as an entry point: Application Gateway receives incoming traffic from the internet and directs it to the appropriate backend pool based on rules such as URL path or hostname.
 
 #### What is an Address Prefix?
+An address prefix is a subnet definition that specifies the range of IP addresses that can be used within that subnet.
 
 #### What is Access Control (IAM) in Azure?
+Access Control (IAM) in Azure is a way to manage access to resources in Azure. It allows you to assign roles to users, groups, or applications to control who can perform what actions on different resources.
 
 #### What types of storage are available in Azure?
+Azure offers various types of storage services like Azure Blob Storage, Azure File Storage, and Azure Disk Storage, which provide scalable and durable storage options.
 
 #### What are Managed Identity, Service Connection, and Principal?
 
-#### How can I create an Azure VM?
+- Managed Identity: It is a feature that allows Azure resources to authenticate and access other Azure services or resources securely without the need for credentials or secrets.
 
-#### How can I control traffic on a VM?
+- Service Connection: It is a way to connect to Azure resources securely without having to manage credentials. It allows you to connect to Azure resources using pre-defined settings and connections.
 
-#### How can I increase the disk size of a running VM without affecting it?
+- Principal: It is an entity that represents a user, group, or service in Azure. It can be used to define permissions and access control settings.
+
 
 #### How can I log in to Azure without sharing a username and password?
+You can use Azure Active Directory (AD) to log in to Azure without sharing a username and password. For example, you can use Azure AD to sign in to the Azure portal, Azure CLI, or Azure PowerShell.
 
 #### How can I connect an On-Prem VM to an Azure VM?
+You can use Azure ExpressRoute or a Site-to-Site VPN to connect an On-Prem VM to an Azure VM. For example, you can create an ExpressRoute circuit and connect it to your on-premises network using an ExpressRoute gateway.
 
 #### What is Bastion and can it be replaced with a firewall?
+Bastion is a service offered by Azure that allows you to securely connect to Azure VMs over the internet. It acts as an entry point for incoming traffic and provides a secure way to connect to your VMs. While it can be used as a replacement for a firewall, it is designed specifically for securely accessing VMs in Azure.
 
 #### What are Network Security Groups (NSGs) and Application Security Groups (ASGs)?
+Network Security Groups (NSGs) are used to filter network traffic to and from Azure resources. They allow you to define rules that specify what traffic is allowed or denied. Application Security Groups (ASGs) are used to group network interfaces that belong to the same application. They allow you to apply security policies to groups of interfaces rather than individual interfaces.
 
 #### What is the purpose of a Virtual Network in Azure?
+A Virtual Network (VNet) provides a dedicated network space in which Azure resources can be deployed. It allows you to segment your network into different subnets, define IP address ranges, and control network traffic.
 
 #### What types of resources are typically worked on in Azure?
+Azure offers various types of resources, including Virtual Machines, App Services, Functions, Containers, Databases, Kubernetes, and more. Depending on your requirements, you can choose the appropriate resource type for your workload.
 
 #### What services does Azure offer for high availability?
+Azure offers several services to ensure high availability, including Availability Sets, Availability Zones, Load Balancers, and Application Gateways. For example, Availability Sets ensure that the VMs are spread across different fault domains and update domains to provide high availability. Load Balancers distribute incoming traffic across multiple VMs to ensure that no single VM is overloaded.
 
 #### How can I secure and patch an Azure VM?
+You can secure and patch an Azure VM by following best practices for security and patch management. For example, you can use Azure Security Center to monitor and apply security recommendations, and configure the VM's automatic updates to ensure that the latest security patches are applied.
