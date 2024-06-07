@@ -67,13 +67,8 @@ Access Control (IAM) in Azure is a way to manage access to resources in Azure. I
 Azure offers various types of storage services, including:
 - Blob Storage: For storing unstructured data like images, videos, and files.
 - File Storage: For sharing files across Windows, Linux, and macOS environments.
-- Disk Storage: For attaching managed disks to virtual machines.
 - Queue Storage: For storing and retrieving messages.
 - Table Storage: For storing structured, NoSQL data.
-- Cognitive Services: For storing and retrieving data for machine learning and AI workloads.
-- Azure Data Lake Storage: For storing and processing large amounts of unstructured data.
-- Azure StorSimple: For storing and managing hybrid cloud data.
-- Azure Storage Sync: For synchronizing data across on-premises and cloud storage.
 
 #### What are Managed Identity, Service Connection, and Principal?
 
