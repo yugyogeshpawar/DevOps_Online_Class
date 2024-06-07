@@ -64,7 +64,16 @@ An address prefix is a subnet definition that specifies the range of IP addresse
 Access Control (IAM) in Azure is a way to manage access to resources in Azure. It allows you to assign roles to users, groups, or applications to control who can perform what actions on different resources.
 
 #### What types of storage are available in Azure?
-Azure offers various types of storage services like Azure Blob Storage, Azure File Storage, and Azure Disk Storage, which provide scalable and durable storage options.
+Azure offers various types of storage services, including:
+- Blob Storage: For storing unstructured data like images, videos, and files.
+- File Storage: For sharing files across Windows, Linux, and macOS environments.
+- Disk Storage: For attaching managed disks to virtual machines.
+- Queue Storage: For storing and retrieving messages.
+- Table Storage: For storing structured, NoSQL data.
+- Cognitive Services: For storing and retrieving data for machine learning and AI workloads.
+- Azure Data Lake Storage: For storing and processing large amounts of unstructured data.
+- Azure StorSimple: For storing and managing hybrid cloud data.
+- Azure Storage Sync: For synchronizing data across on-premises and cloud storage.
 
 #### What are Managed Identity, Service Connection, and Principal?
 
