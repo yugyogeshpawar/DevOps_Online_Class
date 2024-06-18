@@ -59,3 +59,27 @@ pkg/
 .terraform.lock.hcl
 *.tfvars
 release/wi-kubernetes-manifests.yaml
+
+
+.gitignore
+# Python
+__pycache__/
+*.py[co]
+*.pyo
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
