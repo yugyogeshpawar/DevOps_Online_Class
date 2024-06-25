@@ -29,3 +29,11 @@ resource "azurerm_linux_virtual_machine" "linux_vms"{
 }
 
 ```
+
+
+<!-- Add a comment input form -->
+<form>
+  <label for="comment">Comment:</label><br>
+  <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
+  <input type="submit" value="Submit">
+</form>
