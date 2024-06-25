@@ -47,6 +47,7 @@ Answer: App services are used to host web apps. it is a pass service. which prov
 
 
 # azure-pipelines.yml
+```terraform
 
 trigger:
 - main
@@ -96,3 +97,5 @@ steps:
     runtimeStack: 'JAVA|11-java11'
     runtimeVersion: 'latest'
     slotName: 'production' 
+
+```
