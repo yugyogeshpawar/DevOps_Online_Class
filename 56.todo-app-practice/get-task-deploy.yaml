@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: get-task-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: get-task
+  template:
+    metadata:
+      labels:
+        app: get-task
+    spec:
+      containers:
+      - name: get-task-container
+        image: yugyogeshpawar/gettaskmicro
+        ports:
+        - containerPort: 8000
+        env: 
+          - name: CONNECTION_STRING
+            value: "Driver={ODBC Driver 17 for SQL Server};Server=tcp:yugdbser.database.windows.net,1433;Database=yugdb;Uid=yug;Pwd=Yogesh@72448;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"

@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp-deploy
+spec:
+  selector:
+    matchLabels:
+      app: myapp-deployment
+  template:
+    metadata:
+      labels:
+        app: myapp-deployment
+    spec:
+      containers:
+      - name: myapp-deployment-container
+        image: devopsinsiders/micro-todo-ui
+        ports:
+        - containerPort: 80

@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myingress-open-source
+  labels:
+    name: myingress-open-source
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: open-source-ingress.yogeshpawar.info
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: myservice
+            port: 
+              number: 80

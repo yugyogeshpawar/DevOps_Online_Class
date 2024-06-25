@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: delete-task-deploy
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: delete-task
+  template:
+    metadata:
+      labels:
+        app: delete-task
+    spec:
+      containers:
+      - name: delete-task-container
+        image: yugyogeshpawar/deletetaskmicro
+        ports:
+        - containerPort: 8000
+        env: 
+          - name: CONNECTION_STRING
+            value: "Driver={ODBC Driver 17 for SQL Server};Server=tcp:yugdbser.database.windows.net,1433;Database=yugdb;Uid=yug;Pwd=Yogesh@72448;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;"
