@@ -1,4 +1,4 @@
-## Question 1: Write VM code without registry in terraform with azure provider:
+## Question 1: Write VM code without registry in terraform with azure provider.
 
 ```terraform
 
@@ -30,10 +30,69 @@ resource "azurerm_linux_virtual_machine" "linux_vms"{
 
 ```
 
+## Question 2: Explain app services.
 
-<!-- Add a comment input form -->
-<form>
-  <label for="comment">Comment:</label><br>
-  <textarea id="comment" name="comment" rows="4" cols="50"></textarea><br>
-  <input type="submit" value="Submit">
-</form>
+Answer: App services are used to host web apps. it is a pass service. which provides us high availability, security, performance and easy deployment.
+        types:
+            1. Web Apps
+            2. API Apps
+            3. Mobile Apps
+            4. Function Apps
+            5. App Service Environment (ASE):
+            6. Static Web Apps:
+            and more.
+
+
+## Question 3: Write deployment pipeline for an application on webapp.
+
+
+# azure-pipelines.yml
+
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install and build'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    includeRootFolder: false
+    archiveType: zip
+    archiveFile: $(Build.ArtifactStagingDirectory)/drop.zip
+    replaceExistingArchive: true
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    PathtoPublish: $(Build.ArtifactStagingDirectory)
+    ArtifactName: drop
+    publishLocation: Container
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: '<YourServiceConnection>'
+    WebAppName: '<YourAppName>'
+    packageForLinux: $(Build.ArtifactStagingDirectory)/drop.zip
+
+
+- task: AzureWebApp@1
+  inputs:
+    azureSubscription: '<YourServiceConnection>'
+    appType: webAppLinux
+    appName: '<YourAppName>'
+    package: $(Build.ArtifactStagingDirectory)/drop/
+    runtimeStack: 'JAVA|11-java11'
+    runtimeVersion: 'latest'
+    slotName: 'production' 
