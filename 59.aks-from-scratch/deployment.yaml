@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fronted-deployment
+  labels:
+   app: fronted
+spec:
+  replicas: 4
+  selector:
+    matchExpressions:
+    - key: app
+      operator: In
+      values:
+        - fronted
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      name: nginx
+      labels:
+        app: fronted
+    spec:
+      containers:
+      - image: devopsinsiders/netflix-clone
+        name: nginx-container
+        ports:
+        - containerPort: 80
