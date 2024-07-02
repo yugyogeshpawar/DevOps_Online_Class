@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: app-config
+data:
+  CONNECTION_STRING: "Driver={ODBC Driver 17 for SQL Server};Server=mysql;Database=yourdatabase;UID=root;PWD=yourpassword;"
+
+

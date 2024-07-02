@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: python-app
+  template:
+    metadata:
+      labels:
+        app: python-app
+    spec:
+      containers:
+        - name: python-app
+          image: devopsinsiders/micro-gettasks:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: CONNECTION_STRING
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: CONNECTION_STRING

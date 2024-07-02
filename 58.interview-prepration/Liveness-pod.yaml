@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: combined-probes-demo
+spec:
+  containers:
+  - name: myapp-container
+    image: nginx
+    livenessProbe:
+      httpGet:
+        # path: / # livenessProbe is enabled and will not restart this container because there is nginx page is running in the path.
+        path: /healthz # livenessProbe is enabled by default and will restart this container because there is nothing in the path.
+        port: 80
+      initialDelaySeconds: 10
+      periodSeconds: 10
+    # readinessProbe:
+    #   httpGet:
+    #     path: /ready
+    #     port: 80
+    #   initialDelaySeconds: 5
+    #   periodSeconds: 5

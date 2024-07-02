@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: devopsinsiders/micro-gettasks
+        ports:
+        - containerPort: 8000
+        env:
+        - name: CONNECT_STRING
+          value: ""

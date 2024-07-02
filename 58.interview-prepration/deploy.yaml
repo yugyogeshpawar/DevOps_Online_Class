@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: myapp
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: myapp
+  template:
+    metadata:
+      labels:
+        app: myapp
+    spec:
+      containers:
+      - name: myapp
+        image: devopsinsiders/micro-gettasks
+        ports:
+        - containerPort: 8000
+        env:
+        - name: CONNECTION_STRING
+          value: mysql+pymysql://yogesh:Yogesh@72448@localhost:3306/test?client_encoding=utf8&charset=utf8mb4&driver=MySQL+Connector+Python+Connection+17
