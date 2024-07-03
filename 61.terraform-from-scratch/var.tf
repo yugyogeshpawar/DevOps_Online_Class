@@ -22,3 +22,7 @@ variable "nics" {
 variable "vms" {
   default = {}
 }
+
+variable "pubips" {
+  default = {}
+}

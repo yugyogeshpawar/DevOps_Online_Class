@@ -28,6 +28,7 @@ subnets = {
     address_prefixes    = ["10.0.0.0/24"]
     vnetname            = "vnet1"
     resource_group_name = "yug-rg-1"
+    nsgname  = "example-security-group"
   }
 }
 
@@ -42,7 +43,7 @@ nics = {
     subnetname                    = "subnet1"
     vnetname                      = "vnet1"
     # subnetid= "/subscriptions/f0459865-508b-40f8-9d1d-21ddf74ebf08/resourceGroups/yug-rg-1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"
-
+    pubipname = "pip1"
   }
 }
 
@@ -58,10 +59,23 @@ vms = {
     offer                = "0001-com-ubuntu-server-jammy"
     sku                  = "22_04-lts"
     version              = "latest"
-    nicname              = "nic-1"
-    key_vault_name       = "testvmwithkv"
+    nicname              = "nic1"
+    key_vault_name       = "testvmwithk1"
     admin_username       = "testuser"
     admin_password       = "password"
 
+  }
+}
+
+
+pubips = {
+  pubips1 = {
+    name                = "pip1"
+    resource_group_name = "yug-rg-1"
+    location            = "east us"
+    allocation_method   = "Static"
+    sku                 = "Standard"
+    sku_tier            = "Regional"
+    nicname             = "nic1"
   }
 }
