@@ -30,3 +30,33 @@ subnets = {
     resource_group_name = "yug-rg-1"
   }
 }
+
+
+nics = {
+  nic1 = {
+    name                          = "nic1"
+    location                      = "east us"
+    resource_group_name           = "yug-rg-1"
+    ip_conf_name                  = "testconfiguration1"
+    private_ip_address_allocation = "Dynamic"
+    subnetname                    = "subnet1"
+    vnetname                      = "vnet1"
+    # subnetid= "/subscriptions/f0459865-508b-40f8-9d1d-21ddf74ebf08/resourceGroups/yug-rg-1/providers/Microsoft.Network/virtualNetworks/vnet1/subnets/subnet1"
+
+  }
+}
+
+vms = {
+  vm1 = {
+    name                 = "yug-vm"
+    resource_group_name  = "yug-rg-1"
+    location             = "east us"
+    size                 = "Standard_F2"
+    caching              = "ReadWrite"
+    storage_account_type = "Standard_LRS"
+    publisher            = "Canonical"
+    offer                = "0001-com-ubuntu-server-jammy"
+    sku                  = "22_04-lts"
+    version              = "latest"
+  }
+}

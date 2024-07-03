@@ -33,4 +33,69 @@ resource "azurerm_subnet" "subnet-block" {
 }
 
 
+data "azurerm_subnet" "existing-subnet" {
+  for_each             = var.nics
+  name                 = each.value.subnetname
+  virtual_network_name = each.value.vnetname
+  resource_group_name  = each.value.resource_group_name
+  depends_on           = [azurerm_virtual_network.vnets]
+}
 
+resource "azurerm_network_interface" "nic-block" {
+  for_each            = var.nics
+  name                = each.value.name
+  location            = each.value.location
+  resource_group_name = each.value.resource_group_name
+  ip_configuration {
+    name      = each.value.ip_conf_name
+    subnet_id = data.azurerm_subnet.existing-subnet[each.key].id
+    # subnet_id                     = each.value.subnetid
+    private_ip_address_allocation = each.value.private_ip_address_allocation
+  }
+}
+
+
+data "azurerm_network_interface" "existing-nic" {
+  for_each = var.vms
+  name     = each.value.nicname
+  resource_group_name = each.value.resource_group_name
+}
+
+data "azurerm_key_vault" "example" {
+  for_each = var.vms
+  name                = each.value.key_vault_name
+  resource_group_name = each.value.resource_group_name
+}
+
+
+resource "azurerm_key_vault_secret" "example" {
+  for_each = var.vms
+  name     = each.value.secret_name
+  value    = each.value.secret_value
+  key_vault_id = data.azurerm_key_vault.example[each.key].id
+}
+
+
+resource "azurerm_linux_virtual_machine" "example" {
+  for_each = var.vms
+  name                = each.value.name
+  resource_group_name = each.value.resource_group_name
+  location            = each.value.location
+  size                = each.value.size
+  admin_username      = "adminuser"
+  admin_password      = "P@$$w0rd1234!"
+  network_interface_ids = [
+    data.azurerm_network_interface.nic-block[each.key].id,
+  ]
+  os_disk {
+    caching              = each.value.caching
+    storage_account_type = each.value.storage_account_type
+  }
+
+  source_image_reference {
+    publisher = each.value.publisher
+    offer     = each.value.offer
+    sku       = each.value.sku
+    version   = each.value.version
+  }
+}

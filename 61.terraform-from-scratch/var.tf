@@ -13,3 +13,12 @@ variable "vnets" {
 variable "subnets" {
   default = {}
 }
+
+
+variable "nics" {
+  default = {}
+}
+
+variable "vms" {
+  default = {}
+}
