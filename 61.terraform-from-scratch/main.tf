@@ -61,20 +61,24 @@ data "azurerm_network_interface" "existing-nic" {
   resource_group_name = each.value.resource_group_name
 }
 
-data "azurerm_key_vault" "example" {
+data "azurerm_key_vault" "vm-keyvalut" {
   for_each = var.vms
   name                = each.value.key_vault_name
   resource_group_name = each.value.resource_group_name
 }
 
 
-resource "azurerm_key_vault_secret" "example" {
+data "azurerm_key_vault_secret" "vault-username" {
   for_each = var.vms
-  name     = each.value.secret_name
-  value    = each.value.secret_value
-  key_vault_id = data.azurerm_key_vault.example[each.key].id
+  name         = each.value.admin_username
+  key_vault_id = data.azurerm_key_vault.vm-keyvalut[each.key].id
 }
 
+data "azurerm_key_vault_secret" "vault-password" {
+  for_each = var.vms
+  name         = each.value.admin_password
+  key_vault_id = data.azurerm_key_vault.vm-keyvalut[each.key].id
+}
 
 resource "azurerm_linux_virtual_machine" "example" {
   for_each = var.vms
@@ -82,10 +86,10 @@ resource "azurerm_linux_virtual_machine" "example" {
   resource_group_name = each.value.resource_group_name
   location            = each.value.location
   size                = each.value.size
-  admin_username      = "adminuser"
-  admin_password      = "P@$$w0rd1234!"
+  admin_username      = data.azurerm_key_vault_secret.vault-username
+  admin_password      = data.azurerm_key_vault_secret.vault-password
   network_interface_ids = [
-    data.azurerm_network_interface.nic-block[each.key].id,
+    data.azurerm_network_interface.existing-nic[each.key].id,
   ]
   os_disk {
     caching              = each.value.caching

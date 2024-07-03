@@ -58,5 +58,10 @@ vms = {
     offer                = "0001-com-ubuntu-server-jammy"
     sku                  = "22_04-lts"
     version              = "latest"
+    nicname              = "nic-1"
+    key_vault_name       = "testvmwithkv"
+    admin_username       = "testuser"
+    admin_password       = "password"
+
   }
 }
