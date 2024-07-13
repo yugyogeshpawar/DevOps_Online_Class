@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: busybox-statefulset
+spec:
+  serviceName: "busybox"
+  replicas: 1
+  selector:
+    matchLabels:
+      app: busybox
+  template:
+    metadata:
+      labels:
+        app: busybox
+    spec:
+      containers:
+      - name: busybox
+        image: busybox
+        command: ["/bin/sh", "-c", "sleep 3600"]
+        volumeMounts:
+        - mountPath: "/mnt/azure"
+          name: azure-volume
+      volumes:
+      - name: azure-volume
+        persistentVolumeClaim:
+          claimName: azurefile-pvc

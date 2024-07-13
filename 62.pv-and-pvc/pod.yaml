@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox-test
+spec:
+  containers:
+  - name: busybox
+    image: busybox
+    command: ["/bin/sh", "-c", "echo 'Hello from BusyBox' > /mnt/azure/testfile.txt; sleep 3600"]
+    volumeMounts:
+    - mountPath: "/mnt/azure"
+      name: azure-volume
+  volumes:
+  - name: azure-volume
+    persistentVolumeClaim:
+      claimName: azurefile-pvc
